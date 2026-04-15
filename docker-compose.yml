@@ -1,0 +1,10 @@
+services:
+  vm-server:
+    image: nginx:alpine
+    container_name: distribuidor-vm
+    ports:
+      - "8080:80"
+    volumes:
+      - /ruta/pendrive:/usr/share/nginx/html:ro
+    restart: always
+    # para descargar, dirigirse a ip:8080/.ova
