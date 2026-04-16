@@ -14,13 +14,14 @@ A continuación, os adjuntamos una serie de recursos para poder consultar los co
 
 ---
 
-## 🛠️ Requisitos Previos
+## 🛠️ Requisitos previos
 * **VirtualBox** instalado en tu ordenador.
-* Descargar el archivo de la máquina virtual. (`kubernetes-base.ova`). *Este archivo es una imagen de Ubuntu 24.04 LTS con `microk8s` instalado y con un servidor NFS configurado*.
+* Descargar el archivo de la máquina virtual. (`kubernetes-base.ova`).
+    >*Este archivo es una imagen de Ubuntu 24.04 LTS con `microk8s` instalado y con un servidor NFS configurado*.
 
 ---
 
-## 🚀 Fase 1: Importar la Infraestructura
+## 🚀 Fase 1: Importar la infraestructura
 
 1. Abre VirtualBox.
 2. Ve a **Archivo > Importar servicio virtualizado**.
@@ -30,3 +31,30 @@ A continuación, os adjuntamos una serie de recursos para poder consultar los co
 6. Arranca la máquina virtual. La contraseña para el usuario `user` es `user1234`.
 
 ---
+
+## 🏗️ Fase 2: Construcción del clúster
+Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplegaremos nuestra aula inteligente.
+
+1. Para identificar mejor el rol de cada máquina en le clúster, cambiaremos el **hostname**. A continuación, mostramos una sugerencia de nombres, así como los comandos para configurarlos.
+    ```bash
+    sudo hostnamectl set-hostname control-plane
+    sudo hostnamectl set-hostname worker1
+    sudo hostnamectl set-hostname worker2
+    ```
+    > ⚠️ Nota: Después de esto, la terminal seguirá mostrando el nombre antiguo hasta que cierres sesión y vuelvas a entrar, o reinicies la máquina.
+
+2. Ejecuta el script `start-nfs-server.sh` de este repositorio con permisos de administrador para activar el servidor NFS en el nodo del plano de control. Comprueba que el servidor está activo con:
+    ```bash 
+    sudo systemctl status nfs-server
+    ```
+
+3. En el nodo que conformará el plano de control, ejecuta el siguiente comando para obtener la IP, el puerto y un token para unir los nodos trabajadores.
+    ```bash
+    microk8s add-node
+    ```
+
+4. En los nodos trabajadores ejecuta el siguiente comando con la IP, puerto y token que has obtenido en el paso anterior.
+    ```bash
+    microk8s join <IP>:<PUERTO>/<TOKEN>
+    ```
+    > Pudes comprobar que los nodos trabajadores se han unido correctamente ejecutando el siguiente comando en el nodo del plano de control: `microk8s kubectl get nodes`
