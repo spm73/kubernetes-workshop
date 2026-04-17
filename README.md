@@ -43,7 +43,7 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
     ```
     > ⚠️ Nota: Después de esto, la terminal seguirá mostrando el nombre antiguo hasta que cierres sesión y vuelvas a entrar, o reinicies la máquina.
 
-2. Ejecuta el script `start-nfs-server.sh` de este repositorio con permisos de administrador para activar el servidor NFS en el nodo del plano de control. Comprueba que el servidor está activo con:
+2. Ejecuta el script `start-nfs-server.sh` que esta en la carpeta fase2 de este repositorio con permisos de administrador para activar el servidor NFS en el nodo del plano de control. Comprueba que el servidor está activo con:
     ```bash 
     sudo systemctl status nfs-server
     ```
@@ -58,3 +58,14 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
     microk8s join <IP>:<PUERTO>/<TOKEN>
     ```
     > Pudes comprobar que los nodos trabajadores se han unido correctamente ejecutando el siguiente comando en el nodo del plano de control: `microk8s kubectl get nodes`
+
+5. En el nodo del plano de control, activa el *add-on* de DNS para poder trabajar con nombres en vez de con IPs internas del clúster.
+    ```bash
+    microk8s enable dns
+    ```
+---
+## 🚀 Fase 3: Despliegue del Aula Inteligente
+¡Ha llegado el momento clave! Vamos a desplegar nuestro aula inteligente. El siguiente diagrama muestra la solución que vamos a desplegar:
+![Diagrama de la arquitectura a desplegar](pictures/diagram.png)
+
+1. 
