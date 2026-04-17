@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: 
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    
+  nfs:
+    server: 
+    path: /var/nfs/kubernetes-workshop/mqtt

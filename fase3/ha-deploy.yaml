@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 
+spec:
+  replicas: 1
+  selector:
+
+  template:
+    metadata:
+
+    spec:
+      containers:
+        - name: 
+          image: ghcr.io/home-assistant/home-assistant:stable
+          ports:
+            - containerPort: 
+          volumeMounts:
+            - name: 
+              mountPath: 
+          env:
+            - name: TZ
+              value: "Europe/Madrid" 
+      volumes:
+        - name: 
+          persistentVolumeClaim:
+            claimName: 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 
+spec:
+  type: 
+  selector:
+
+  ports:
+    - protocol: TCP
+      port: 
+      targetPort: 
+      nodePort: 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: 
+spec:
+  accessModes:
+    - 
+  resources:
+    requests:
+      storage: 2Gi

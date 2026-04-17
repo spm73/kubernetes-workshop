@@ -43,7 +43,7 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
     ```
     > ⚠️ Nota: Después de esto, la terminal seguirá mostrando el nombre antiguo hasta que cierres sesión y vuelvas a entrar, o reinicies la máquina.
 
-2. Ejecuta el script `start-nfs-server.sh` que esta en la carpeta fase2 de este repositorio con permisos de administrador para activar el servidor NFS en el nodo del plano de control. Comprueba que el servidor está activo con:
+2. Ejecuta el script `start-nfs-server.sh` que esta en la carpeta `fase2` de este repositorio con permisos de administrador para activar el servidor NFS en el nodo del plano de control. Comprueba que el servidor está activo con:
     ```bash 
     sudo systemctl status nfs-server
     ```
@@ -57,7 +57,7 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
     ```bash
     microk8s join <IP>:<PUERTO>/<TOKEN>
     ```
-    > Pudes comprobar que los nodos trabajadores se han unido correctamente ejecutando el siguiente comando en el nodo del plano de control: `microk8s kubectl get nodes`
+    > Pudes comprobar que los nodos trabajadores se han unido correctamente ejecutando el siguiente comando en el nodo del plano de control: `kubectl get nodes`
 
 5. En el nodo del plano de control, activa el *add-on* de DNS para poder trabajar con nombres en vez de con IPs internas del clúster.
     ```bash
@@ -68,4 +68,22 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
 ¡Ha llegado el momento clave! Vamos a desplegar nuestro aula inteligente. El siguiente diagrama muestra la solución que vamos a desplegar:
 ![Diagrama de la arquitectura a desplegar](pictures/diagram.png)
 
-1. 
+1. Rellena los manifiestos YAML del directorio `fase3` correctamente. Puedes consultar las soluciones si estas un poco perdido.
+
+2. Aplica las configuraciones de los PVs usando el siguiente comando:
+    ```bash
+    kubectl apply -f <nombre-fichero>
+    ```
+
+3. Levantamos el *broker* MQTT, así como el servicio y su PVC empleando el mismo comando que hemos usado en el paso anterior.
+
+4. Lanzamos el servidor de Home Assistant (HA) junto a su servicio y su PVC usando de igual forma `kubectl apply -f <nombre-fichero>`. Puedes acceder a HA usando la IP del nodo del plano de control y el puerto que hayas definido en el servicio para configurar HA e instalar la integración de MQTT.
+
+5. Levantamos nuestro módulo de visión artificial empleando el mismo comando.
+
+6. Ejecuta el siguiente comando para listar los Pods que se han creado y espera a que todos estén en `Running`.
+    ```bash
+    kubectl get pods
+    ```
+
+7. Comprueba que todo funcione correctamente.

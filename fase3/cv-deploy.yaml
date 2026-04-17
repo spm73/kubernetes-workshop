@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 
+spec:
+  replicas: 1
+  selector:
+
+  template:
+    metadata:
+      
+    spec:
+      containers:
+        - name: 
+          image: 
+          envFrom:
+            - configMapRef:
+                name: 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 
+data:
+  CAMERA_STREAM_URL: 
+  MQTT_BROKER_URL: 
+  MQTT_PORT: 

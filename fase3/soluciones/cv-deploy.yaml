@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cv-module
+  labels:
+    app: cv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cv
+  template:
+    metadata:
+      labels:
+        app: cv
+    spec:
+      containers:
+        - name: cv-script
+          image: 
+          envFrom:
+            - configMapRef:
+                name: cv-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cv-config
+data:
+  CAMERA_STREAM_URL: https://<IP-Cámara>:<Puerto-Cámara>/video
+  MQTT_BROKER_URL: mqtt-service
+  MQTT_PORT: 1883

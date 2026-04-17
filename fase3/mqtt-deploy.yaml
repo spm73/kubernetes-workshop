@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 
+spec:
+  replicas: 1
+  selector:
+
+  template:
+    metadata:
+      
+    spec:
+      containers:
+        - name: 
+          image: eclipse-mosquitto:2
+          ports:
+            - containerPort: 
+          volumeMounts:
+            - name: 
+              mountPath: 
+      volumes:
+        - name: 
+          persistentVolumeClaim:
+            claimName: 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 
+spec:
+  type: 
+  selector:
+    
+  ports:
+    - protocol: 
+      port: 
+      targetPort: 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: 
+spec:
+  accessModes:
+    
+  resources:
+    requests:
+      storage: 2Gi
