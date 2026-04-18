@@ -29,3 +29,4 @@ data:
   CAMERA_STREAM_URL: https://<IP-Cámara>:<Puerto-Cámara>/video
   MQTT_BROKER_URL: mqtt-service
   MQTT_PORT: 1883
+  MQTT_TOPIC: aula/alertas/gatos
