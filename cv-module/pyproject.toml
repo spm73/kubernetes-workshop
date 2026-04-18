@@ -1,0 +1,11 @@
+[project]
+name = "cv-module"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "opencv-python-headless>=4.13.0.92",
+    "paho-mqtt>=2.1.0",
+    "ultralytics>=8.4.38",
+]
