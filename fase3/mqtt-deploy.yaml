@@ -16,12 +16,29 @@ spec:
           ports:
             - containerPort: 
           volumeMounts:
+            # PVC
             - name: 
               mountPath: 
+            # ConfigMap
+            - name: 
+              mountPath: 
+              subPath: 
       volumes:
         - name: 
           persistentVolumeClaim:
             claimName: 
+        - name: 
+          configMap:
+            name: 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 
+data:
+  mosquitto.conf: |
+    listener 1883 0.0.0.0
+    allow_anonymous true
 ---
 apiVersion: v1
 kind: Service

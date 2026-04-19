@@ -22,10 +22,25 @@ spec:
           volumeMounts:
             - name: mqtt-data
               mountPath: /mosquitto/data
+            - name: config-volume
+              mountPath: /mosquitto/config/mosquitto.conf
+              subPath: mosquitto.conf
       volumes:
         - name: mqtt-data
           persistentVolumeClaim:
             claimName: mqtt-pvc
+        - name: config-volume
+          configMap:
+            name: mqtt-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mqtt-config
+data:
+  mosquitto.conf: |
+    listener 1883 0.0.0.0
+    allow_anonymous true
 ---
 apiVersion: v1
 kind: Service
