@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: 
-          image: 
+          image: spm73/k8s-cv-module:v2
           envFrom:
             - configMapRef:
                 name: 

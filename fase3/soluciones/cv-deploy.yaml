@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cv-script
-          image: 
+          image: spm73/k8s-cv-module:v2
           envFrom:
             - configMapRef:
                 name: cv-config
