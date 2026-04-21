@@ -9,7 +9,7 @@ Aprenderemos a crear un clúster de Kubernetes usando `microk8s` en varias máqu
 ## 📚 Material de apoyo
 A continuación, os adjuntamos una serie de recursos para poder consultar los conceptos teóricos que vamos a gastar en el taller:
 
-* **[📽️ Presentación del taller]():** — *Aquí encontrarás un resumen de los conceptos clave.*
+* **[📽️ Presentación del taller](https://view.genially.com/69de8ca748ebb6b0cef431de):** — *Aquí encontrarás un resumen de los conceptos clave.*
 * **[📖 Documentación (Wiki)](https://marcelosaval.github.io/Wiki-IMCR/Cloud%20Computing/KubernetesYCloudComputing/):** — *Entrada de la wiki de la asignatura de IMCR donde se expone más detalladamente cada concepto.*
 
 ---
