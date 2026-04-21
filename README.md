@@ -66,7 +66,7 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
 ---
 ## 🚀 Fase 3: Despliegue del Aula Inteligente
 ¡Ha llegado el momento clave! Vamos a desplegar nuestro aula inteligente. El siguiente diagrama muestra la solución que vamos a desplegar:
-![Diagrama de la arquitectura a desplegar](pictures/diagram.png)
+![Diagrama de la arquitectura a desplegar](pictures/diagram.jpg)
 
 1. Rellena los manifiestos YAML del directorio `fase3` correctamente. Puedes consultar las soluciones si estas un poco perdido.
 
