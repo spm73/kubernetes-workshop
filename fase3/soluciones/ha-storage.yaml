@@ -9,4 +9,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: <IP_Servidor>
-    path: /var/nfs/kubernetes-workshop/home-assistant
+    path: /var/nfs/kubernetes-workshop/homeassistant
