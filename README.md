@@ -70,14 +70,12 @@ Con los siguientes pasos, crearemos un clúster de Kubernetes en el que desplega
 
 1. Rellena los manifiestos YAML del directorio `fase3` correctamente. Puedes consultar las soluciones si estas un poco perdido.
 
-2. Aplica las configuraciones de los PVs usando el siguiente comando:
+2. Primero levantaremos la parte relacionada con MQTT. Aplica la configuración del PV y el Deployment usando el siguiente comando:
     ```bash
     kubectl apply -f <nombre-fichero>
     ```
 
-3. Levantamos el *broker* MQTT, así como el servicio y su PVC empleando el mismo comando que hemos usado en el paso anterior.
-
-4. Lanzamos el servidor de Home Assistant (HA) junto a su servicio y su PVC usando de igual forma `kubectl apply -f <nombre-fichero>`. Puedes acceder a HA usando la IP del nodo del plano de control y el puerto que hayas definido en el servicio. Realizaremos los siguientes pasos para conectar HA con MQTT:
+3. A continuación, creamos el PV de Home Assistant (HA) y seguidamente lanzamos el servidor junto a su servicio y su PVC usando de igual forma `kubectl apply -f <nombre-fichero>`. Puedes acceder a HA usando la IP del nodo del plano de control y el puerto que hayas definido en el servicio. Realizaremos los siguientes pasos para conectar HA con MQTT:
     1. En la página de HA, dirigete a **Ajustes > Dispositivos y Servicios** y pincha en el botón **Añadir integración** (suele estar abajo a la izquierda).
 
     2. Busca **MQTT** y selecciónalo. Rellena la sección del *Broker* y *Puerto* con el nombre y el puerto que has configurado al servicio de MQTT. *(Deja el usuario y contraseña en blanco)*.
@@ -140,7 +138,7 @@ kubectl delete -f <nombre-fichero>
 Para eliminar todos los objetos creados por un manifiesto YAML.
 
 ```bash
-kubectl get <tipo-objeto-kubernetes> <nombre-objeto-kubernetes>
+kubectl get <tipo-objeto-kubernetes> [<nombre-objeto-kubernetes>]
 ```
 Para obtener los objetos de dicho tipo presentes en el clúster, además de su estado.
 
